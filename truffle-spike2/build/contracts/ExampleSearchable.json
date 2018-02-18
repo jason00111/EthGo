@@ -1,0 +1,329 @@
+{
+  "contractName": "ExampleSearchable",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "removeSearchTerm",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "addSearchTerm",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "searchTerm",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "AddSearchTerm",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "RemoveSearchTerm",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b60405161063b38038061063b8339810160405280805182019190505080336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806040518082805190602001908083835b6020831015156100a2578051825260208201915060208101905060208303925061007d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a2505061052f8061010c6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820f85cf7996065360054b161e9647bd4aff7d7554a315db02190242baa37b6885a0029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820f85cf7996065360054b161e9647bd4aff7d7554a315db02190242baa37b6885a0029",
+  "sourceMap": "54:125:0:-;;;99:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;156:10;509::2;501:5;;:18;;;;;;;;;;;;;;;;;;281:10:1;267:25;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;214:83:1;99:78:0;54:125;;;;;;",
+  "deployedSourceMap": "54:125:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;389:90:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;301:84:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;389:90:1;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;469:4:1;452:22;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;389:90:1;:::o;238:20:2:-;;;;;;;;;;;;;:::o;301:84:1:-;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;375:4:1;361:19;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;301:84:1;:::o;832:169:2:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
+  "source": "pragma solidity ^0.4.18;\n\nimport \"./Searchable.sol\";\n\ncontract ExampleSearchable is Searchable {\n  function ExampleSearchable(string searchTerm) Searchable(searchTerm) public {}\n}\n",
+  "sourcePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/ExampleSearchable.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/ExampleSearchable.sol",
+      "exportedSymbols": {
+        "ExampleSearchable": [
+          14
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 63,
+          "absolutePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/Searchable.sol",
+          "file": "./Searchable.sol",
+          "scope": 15,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "26:26:0"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            62,
+            118
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            14,
+            62,
+            118
+          ],
+          "name": "ExampleSearchable",
+          "scope": 15
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": [
+                null
+              ]
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Searchable",
+                  "referencedDeclaration": 62,
+                  "type": "contract Searchable"
+                },
+                "id": 3,
+                "name": "UserDefinedTypeName",
+                "src": "84:10:0"
+              }
+            ],
+            "id": 4,
+            "name": "InheritanceSpecifier",
+            "src": "84:10:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "name": "ExampleSearchable",
+              "payable": false,
+              "scope": 14,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "searchTerm",
+                      "scope": 13,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 5,
+                        "name": "ElementaryTypeName",
+                        "src": "126:6:0"
+                      }
+                    ],
+                    "id": 6,
+                    "name": "VariableDeclaration",
+                    "src": "126:17:0"
+                  }
+                ],
+                "id": 7,
+                "name": "ParameterList",
+                "src": "125:19:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 11,
+                "name": "ParameterList",
+                "src": "175:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 62,
+                      "type": "type(contract Searchable)",
+                      "value": "Searchable"
+                    },
+                    "id": 8,
+                    "name": "Identifier",
+                    "src": "145:10:0"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 6,
+                      "type": "string memory",
+                      "value": "searchTerm"
+                    },
+                    "id": 9,
+                    "name": "Identifier",
+                    "src": "156:10:0"
+                  }
+                ],
+                "id": 10,
+                "name": "ModifierInvocation",
+                "src": "145:22:0"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12,
+                "name": "Block",
+                "src": "175:2:0"
+              }
+            ],
+            "id": 13,
+            "name": "FunctionDefinition",
+            "src": "99:78:0"
+          }
+        ],
+        "id": 14,
+        "name": "ContractDefinition",
+        "src": "54:125:0"
+      }
+    ],
+    "id": 15,
+    "name": "SourceUnit",
+    "src": "0:180:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-18T05:14:56.596Z"
+}

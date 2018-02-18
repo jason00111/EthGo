@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add/Remove Smart Contracts Search Words</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="semantic.min.css">
+
+    <!-- <script src="ipfs.io/ipfs/QmXe7MeRADNfXYia1bbrvFNCHiA4yr2A6tETM5hshYWF9o"></script> -->
+    <script src="web3.min.js"></script>
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <div class="admin-input-area ui form">
+        <input
+          class="word-input"
+          placeholder="enter word to add or remove"
+        />
+        <input
+          class="address-input"
+          placeholder="enter contract address"
+        />
+        <textarea
+          class="abi-input field"
+          placeholder="enter abi / interface"
+        ></textarea>
+      </div>
+      <div class="admin-buttons">
+        <button class="ui button" onclick="add()">Add</button>
+        <button class="ui button" onclick="remove()">Remove</button>
+      </div>
+    </div>
+    <div class="results"></div>
+    <script src="addRemove.js"></script>
+  </body>
+</html>
