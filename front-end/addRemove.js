@@ -1,5 +1,5 @@
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-// var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
+// var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+var web3 = new Web3(web3)
 
 var wordInput = document.getElementsByClassName('word-input')[0]
 var addressInput = document.getElementsByClassName('address-input')[0]
@@ -25,22 +25,29 @@ function addRemove(type) {
       console.log('error:', error)
     } else {
       contract.methods[methodName](word)
-        .send({ from: accounts[0] }, function(error, result) {
+        .send({ from: accounts[0] }, function(error, tx) {
           if (error) {
             console.log('error:', error)
           } else {
-            console.log('send transaction result:', result)
+            console.log('transaction sent:', tx)
+
+            var resultDiv = document.createElement('div')
+            var resultText = document.createTextNode(
+              `${word} was ${type === 'add' ? 'added to' : 'removed from'} ${address} `
+            )
+
+            var etherscanLink = document.createElement('a')
+            etherscanLink.href = 'https://ropsten.etherscan.io/tx/' + tx
+            var etherscanText = document.createTextNode('etherscan')
+            etherscanLink.appendChild(etherscanText)
+
+            resultDiv.appendChild(resultText)
+            resultDiv.appendChild(etherscanLink)
+            document.body.appendChild(resultDiv)
           }
         })
     }
   })
-
-  var resultDiv = document.createElement('div')
-  var resultText = document.createTextNode(
-    `${word} was ${type === 'add' ? 'added to' : 'removed from'} ${address}`
-  )
-  resultDiv.appendChild(resultText)
-  document.body.appendChild(resultDiv)
 }
 
 function add() {

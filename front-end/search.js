@@ -1,5 +1,5 @@
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-// var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
+// var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
 
 var inputField = document.getElementsByClassName('search-input')[0]
 var resultsSection = document.getElementsByClassName('results')[0]
@@ -67,7 +67,7 @@ function displayResults() {
 
     var etherscanDiv = document.createElement('span')
     var etherscanLink = document.createElement('a')
-    etherscanLink.href = 'https://ropsten.etherscan.io/tx/' + address
+    etherscanLink.href = 'https://ropsten.etherscan.io/address/' + address
     var etherscanText = document.createTextNode('etherscan')
     etherscanLink.appendChild(etherscanText)
 
