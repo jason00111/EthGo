@@ -1,4 +1,4 @@
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
 // var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
 
 var inputField = document.getElementsByClassName('search-input')[0]
@@ -49,6 +49,14 @@ function getRemoves(searchTerm, wordHash) {
 function displayResults() {
   console.log('searchResults:', searchResults)
 
+  if (Object.keys(searchResults).length === 0) {
+      var noResultsDiv = document.createElement('div')
+      noResultsDiv.className = 'no-results'
+      var noResultsText = document.createTextNode('no matching contracts found')
+      noResultsDiv.appendChild(noResultsText)
+      resultsSection.appendChild(noResultsDiv)
+  }
+
   Object.keys(searchResults).forEach(function(address) {
     var rowDiv = document.createElement('div')
     rowDiv.className = 'row'
@@ -58,10 +66,8 @@ function displayResults() {
     addressDiv.appendChild(addressText)
 
     var etherscanDiv = document.createElement('span')
-    console.log('etherscanDiv:', etherscanDiv)
     var etherscanLink = document.createElement('a')
-    etherscanLink.href = 'https://etherscan.io/tx/' + address
-    console.log('etherscanLink:', etherscanLink)
+    etherscanLink.href = 'https://ropsten.etherscan.io/tx/' + address
     var etherscanText = document.createTextNode('etherscan')
     etherscanLink.appendChild(etherscanText)
 

@@ -49,6 +49,10 @@ pre {
   margin-bottom: 1em;
 }
 
+.no-results {
+  margin-top: 0.5em;
+}
+
 .admin-wrapper {
   display: flex;
   flex-direction: row;

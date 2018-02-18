@@ -1,4 +1,4 @@
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
 // var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
 
 var wordInput = document.getElementsByClassName('word-input')[0]
