@@ -1,5 +1,5 @@
 .logo {
-  height: 25em;
+  height: 10em;
 }
 
 body {
@@ -26,6 +26,7 @@ html {
   justify-content: center;
   align-items: center;
   margin-bottom: 0.5em;
+  margin-top: 1.5em;
   /* position: absolute;
   top: 50%; */
 }
