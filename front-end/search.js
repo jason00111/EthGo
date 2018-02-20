@@ -1,5 +1,5 @@
-// var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+// var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
 
 var inputField = document.getElementsByClassName('search-input')[0]
 var resultsSection = document.getElementsByClassName('results')[0]
@@ -9,7 +9,7 @@ var removeEventHash = web3.utils.sha3('RemoveSearchTerm(string)')
 
 var searchResults = {}
 
-function getLogs(searchTerm, wordHash) {
+function getLogs(wordHash) {
   web3.eth.getPastLogs({
     fromBlock: '0x1',
     toBlock: 'latest',
@@ -22,12 +22,12 @@ function getLogs(searchTerm, wordHash) {
         searchResults[log.address] = log.blockNumber
       })
 
-      getRemoves(searchTerm, wordHash)
+      getRemoves(wordHash)
     }
   })
 }
 
-function getRemoves(searchTerm, wordHash) {
+function getRemoves(wordHash) {
   web3.eth.getPastLogs({
     fromBlock: '0x1',
     toBlock: 'latest',
@@ -88,7 +88,7 @@ function search() {
   var searchTerm = searchInput.split(' ')[0]
   var wordHash = web3.utils.sha3(searchTerm)
 
-  getLogs(searchTerm, wordHash)
+  getLogs(wordHash)
 }
 
 
