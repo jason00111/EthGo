@@ -4,7 +4,7 @@ import "./Searchable.sol";
 
 contract ExampleSearchable is Searchable {
 
-  function ExampleSearchable(string searchword) public {
-    addSearchTerm(searchword);
+  function ExampleSearchable(string searchword, string message) public {
+    addSearchTerm(searchword, message);
   }
 }

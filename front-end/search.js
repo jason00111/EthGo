@@ -4,11 +4,13 @@ var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
 var inputField = document.getElementsByClassName('search-input')[0]
 var resultsSection = document.getElementsByClassName('results')[0]
 
-var addEventHash = web3.utils.sha3('AddSearchTerm(string)')
+var addEventHash = web3.utils.sha3('AddSearchTerm(string,string)')
+// var addEventMessageHash = web3.utils.sha3('AddSearchTerm(string,string)')
 var removeEventHash = web3.utils.sha3('RemoveSearchTerm(string)')
-// var messageHash = web3.utils.sha3('message')
 
 var searchResults = {}
+
+// function getLogs(eventSignature)
 
 function getLogs(wordHash) {
   web3.eth.getPastLogs({
@@ -22,7 +24,10 @@ function getLogs(wordHash) {
       console.log('foundLogs:', foundLogs)
       foundLogs.forEach(function(log) {
         console.log('log:', log)
-        searchResults[log.address] = log.blockNumber
+        searchResults[log.address] = {
+          blockNumber: log.blockNumber,
+          message: web3.utils.hexToUtf8(log.data)
+        }
       })
 
       getRemoves(wordHash)
@@ -41,7 +46,7 @@ function getRemoves(wordHash) {
       console.log('error:', error)
     } else {
       foundLogs.forEach(function(log) {
-        if (searchResults[log.address] < log.blockNumber) {
+        if (searchResults[log.address].blockNumber < log.blockNumber) {
           delete searchResults[log.address]
         }
       })
@@ -62,6 +67,8 @@ function displayResults() {
   }
 
   Object.keys(searchResults).forEach(function(address) {
+    var message = searchResults[address].message
+
     var rowDiv = document.createElement('div')
     rowDiv.className = 'row'
 
@@ -69,15 +76,19 @@ function displayResults() {
     var addressText = document.createTextNode(address)
     addressDiv.appendChild(addressText)
 
+    var messageDiv = document.createElement('span')
+    var messageText = document.createTextNode(message)
+    messageDiv.appendChild(messageText)
+
     var etherscanDiv = document.createElement('span')
     var etherscanLink = document.createElement('a')
     etherscanLink.href = 'https://ropsten.etherscan.io/address/' + address
     var etherscanText = document.createTextNode('etherscan')
     etherscanLink.appendChild(etherscanText)
-
     etherscanDiv.appendChild(etherscanLink)
 
     rowDiv.appendChild(addressDiv)
+    rowDiv.appendChild(messageDiv)
     rowDiv.appendChild(etherscanDiv)
 
     resultsSection.appendChild(rowDiv)

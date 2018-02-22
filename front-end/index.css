@@ -44,6 +44,11 @@ pre {
   margin-right: 2em;
 }
 
+span {
+  display: inline;
+  margin-right: 2em;
+}
+
 .row {
   margin-top: 1em;
   margin-bottom: 1em;
