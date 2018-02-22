@@ -90,16 +90,13 @@ function displayResults() {
     var messageText = document.createTextNode(message)
     messageDiv.appendChild(messageText)
 
-    var etherscanDiv = document.createElement('div')
-    etherscanDiv.className = 'etherscan'
     var etherscanLink = document.createElement('a')
     etherscanLink.href = 'https://ropsten.etherscan.io/address/' + address
     var etherscanText = document.createTextNode('etherscan')
     etherscanLink.appendChild(etherscanText)
-    etherscanDiv.appendChild(etherscanLink)
 
     rowDiv.appendChild(addressDiv)
-    rowDiv.appendChild(etherscanDiv)
+    // rowDiv.appendChild(etherscanLink)
     rowDiv.appendChild(messageDiv)
 
     resultsSection.appendChild(rowDiv)

@@ -37,6 +37,7 @@ html {
 
 .search-input {
   margin-right: 0.5em !important;
+  text-align: center !important;
 }
 
 .address, .etherscan, .message {
