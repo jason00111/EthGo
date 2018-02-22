@@ -23,10 +23,18 @@ function getLogs(wordHash) {
     } else {
       console.log('foundLogs:', foundLogs)
       foundLogs.forEach(function(log) {
-        console.log('log:', log)
+        var message =
+          web3.utils.hexToUtf8(log.data)
+            .split('')
+            .reduce(
+              (acc, char) => char.charCodeAt(0) ? acc.concat(char) : acc,
+              ''
+            )
+            .slice(2)
+
         searchResults[log.address] = {
           blockNumber: log.blockNumber,
-          message: web3.utils.hexToUtf8(log.data)
+          message: message
         }
       })
 
@@ -72,15 +80,18 @@ function displayResults() {
     var rowDiv = document.createElement('div')
     rowDiv.className = 'row'
 
-    var addressDiv = document.createElement('pre')
+    var addressDiv = document.createElement('div')
+    addressDiv.className = 'address'
     var addressText = document.createTextNode(address)
     addressDiv.appendChild(addressText)
 
-    var messageDiv = document.createElement('span')
+    var messageDiv = document.createElement('div')
+    messageDiv.className = 'message'
     var messageText = document.createTextNode(message)
     messageDiv.appendChild(messageText)
 
-    var etherscanDiv = document.createElement('span')
+    var etherscanDiv = document.createElement('div')
+    etherscanDiv.className = 'etherscan'
     var etherscanLink = document.createElement('a')
     etherscanLink.href = 'https://ropsten.etherscan.io/address/' + address
     var etherscanText = document.createTextNode('etherscan')
@@ -88,8 +99,8 @@ function displayResults() {
     etherscanDiv.appendChild(etherscanLink)
 
     rowDiv.appendChild(addressDiv)
-    rowDiv.appendChild(messageDiv)
     rowDiv.appendChild(etherscanDiv)
+    rowDiv.appendChild(messageDiv)
 
     resultsSection.appendChild(rowDiv)
   })
