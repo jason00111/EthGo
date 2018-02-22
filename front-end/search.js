@@ -1,4 +1,4 @@
-var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+var web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:7545'))
 // var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/CTNrMRz6lyyxOxddWG7y'))
 
 var inputField = document.getElementsByClassName('search-input')[0]
@@ -6,6 +6,7 @@ var resultsSection = document.getElementsByClassName('results')[0]
 
 var addEventHash = web3.utils.sha3('AddSearchTerm(string)')
 var removeEventHash = web3.utils.sha3('RemoveSearchTerm(string)')
+// var messageHash = web3.utils.sha3('message')
 
 var searchResults = {}
 
@@ -18,11 +19,14 @@ function getLogs(wordHash) {
     if (error) {
       console.log('error:', error)
     } else {
+      console.log('foundLogs:', foundLogs)
       foundLogs.forEach(function(log) {
+        console.log('log:', log)
         searchResults[log.address] = log.blockNumber
       })
 
       getRemoves(wordHash)
+      // displayResults()
     }
   })
 }

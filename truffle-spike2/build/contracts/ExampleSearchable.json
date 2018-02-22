@@ -2,6 +2,20 @@
   "contractName": "ExampleSearchable",
   "abi": [
     {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "removeSearchTerm",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "owner",
@@ -19,15 +33,11 @@
       "constant": false,
       "inputs": [
         {
-          "name": "searchword",
-          "type": "bytes32"
-        },
-        {
-          "name": "message",
-          "type": "bytes32"
+          "name": "term",
+          "type": "string"
         }
       ],
-      "name": "addSearchwordAndMessage",
+      "name": "addSearchTerm",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -51,16 +61,36 @@
       "inputs": [
         {
           "name": "searchword",
-          "type": "bytes32"
-        },
-        {
-          "name": "message",
-          "type": "bytes32"
+          "type": "string"
         }
       ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "AddSearchTerm",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "RemoveSearchTerm",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -80,18 +110,18 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6040516040806104b983398101604052808051906020019091908051906020019091905050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610091828261009864010000000002610143176401000000009004565b505061013f565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100f357600080fd5b81600019167f6d65737361676500000000000000000000000000000000000000000000000000600019168260405180826000191660001916815260200191505060405180910390a25050565b61036b8061014e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461005c578063d91d8bab146100b1578063f2fde38b146100e5575b600080fd5b341561006757600080fd5b61006f61011e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100bc57600080fd5b6100e360048080356000191690602001909190803560001916906020019091905050610143565b005b34156100f057600080fd5b61011c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ea565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561019e57600080fd5b81600019167f6d65737361676500000000000000000000000000000000000000000000000000600019168260405180826000191660001916815260200191505060405180910390a25050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561024557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561028157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058203d9d4a9938d3e803d6788d3e39c68190d2171ddee1e1027e3de9378372a23ff80029",
-  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461005c578063d91d8bab146100b1578063f2fde38b146100e5575b600080fd5b341561006757600080fd5b61006f61011e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100bc57600080fd5b6100e360048080356000191690602001909190803560001916906020019091905050610143565b005b34156100f057600080fd5b61011c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ea565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561019e57600080fd5b81600019167f6d65737361676500000000000000000000000000000000000000000000000000600019168260405180826000191660001916815260200191505060405180910390a25050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561024557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561028157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058203d9d4a9938d3e803d6788d3e39c68190d2171ddee1e1027e3de9378372a23ff80029",
-  "sourceMap": "54:174:0:-;;;100:126;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;509:10:2;501:5;;:18;;;;;;;;;;;;;;;;;;177:44:0;201:10;213:7;177:23;;;;;:44;;;:::i;:::-;100:126;;54:174;;627:161:1;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;772:10:1;738:45;;;752:18;738:45;;;743:7;738:45;;;;;;;;;;;;;;;;;;;;;;;;627:161;;:::o;54:174:0:-;;;;;;;",
-  "deployedSourceMap": "54:174:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;627:161:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;:::o;627:161:1:-;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;772:10:1;738:45;;;752:18;738:45;;;743:7;738:45;;;;;;;;;;;;;;;;;;;;;;;;627:161;;:::o;832:169:2:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
-  "source": "pragma solidity ^0.4.18;\n\nimport \"./Searchable.sol\";\n\ncontract ExampleSearchable is Searchable {\n\n  function ExampleSearchable(bytes32 searchword, bytes32 message) public {\n    addSearchwordAndMessage(searchword, message);\n  }\n}\n",
+  "bytecode": "0x6060604052341561000f57600080fd5b6040516106b83803806106b883398101604052808051820191905050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506100878161008d640100000000026102c1176401000000009004565b5061017a565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156100e857600080fd5b806040518082805190602001908083835b60208310151561011e57805182526020820191506020810190506020830392506100f9565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b61052f806101896000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820bd6654335de406a8d85d109098f486faa59972583173f694ff9ef60d9f233a560029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820bd6654335de406a8d85d109098f486faa59972583173f694ff9ef60d9f233a560029",
+  "sourceMap": "54:137:0:-;;;100:89;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;509:10:2;501:5;;:18;;;;;;;;;;;;;;;;;;159:25:0;173:10;159:13;;;;;:25;;;:::i;:::-;100:89;54:137;;437:84:1;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;511:4:1;497:19;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;437:84:1;:::o;54:137:0:-;;;;;;;",
+  "deployedSourceMap": "54:137:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;437:84:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90:1;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;722:4:1;705:22;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90:1;:::o;238:20:2:-;;;;;;;;;;;;;:::o;437:84:1:-;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;511:4:1;497:19;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;437:84:1;:::o;832:169:2:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
+  "source": "pragma solidity ^0.4.18;\n\nimport \"./Searchable.sol\";\n\ncontract ExampleSearchable is Searchable {\n\n  function ExampleSearchable(string searchword) public {\n    addSearchTerm(searchword);\n  }\n}\n",
   "sourcePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/ExampleSearchable.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/ExampleSearchable.sol",
       "exportedSymbols": {
         "ExampleSearchable": [
-          18
+          15
         ]
       }
     },
@@ -111,10 +141,10 @@
       },
       {
         "attributes": {
-          "SourceUnit": 43,
+          "SourceUnit": 54,
           "absolutePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/Searchable.sol",
           "file": "./Searchable.sol",
-          "scope": 19,
+          "scope": 16,
           "symbolAliases": [
             null
           ],
@@ -127,19 +157,19 @@
       {
         "attributes": {
           "contractDependencies": [
-            42,
-            98
+            53,
+            109
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            18,
-            42,
-            98
+            15,
+            53,
+            109
           ],
           "name": "ExampleSearchable",
-          "scope": 19
+          "scope": 16
         },
         "children": [
           {
@@ -153,7 +183,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Searchable",
-                  "referencedDeclaration": 42,
+                  "referencedDeclaration": 53,
                   "type": "contract Searchable"
                 },
                 "id": 3,
@@ -175,7 +205,7 @@
               ],
               "name": "ExampleSearchable",
               "payable": false,
-              "scope": 18,
+              "scope": 15,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -187,58 +217,32 @@
                     "attributes": {
                       "constant": false,
                       "name": "searchword",
-                      "scope": 17,
+                      "scope": 14,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "bytes32",
+                      "type": "string memory",
                       "value": null,
                       "visibility": "internal"
                     },
                     "children": [
                       {
                         "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
+                          "name": "string",
+                          "type": "string storage pointer"
                         },
                         "id": 5,
                         "name": "ElementaryTypeName",
-                        "src": "127:7:0"
+                        "src": "127:6:0"
                       }
                     ],
                     "id": 6,
                     "name": "VariableDeclaration",
-                    "src": "127:18:0"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "message",
-                      "scope": 17,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 7,
-                        "name": "ElementaryTypeName",
-                        "src": "147:7:0"
-                      }
-                    ],
-                    "id": 8,
-                    "name": "VariableDeclaration",
-                    "src": "147:15:0"
+                    "src": "127:17:0"
                   }
                 ],
-                "id": 9,
+                "id": 7,
                 "name": "ParameterList",
-                "src": "126:37:0"
+                "src": "126:19:0"
               },
               {
                 "attributes": {
@@ -247,9 +251,9 @@
                   ]
                 },
                 "children": [],
-                "id": 10,
+                "id": 8,
                 "name": "ParameterList",
-                "src": "171:0:0"
+                "src": "153:0:0"
               },
               {
                 "children": [
@@ -274,24 +278,20 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_bytes32",
-                                  "typeString": "bytes32"
-                                },
-                                {
-                                  "typeIdentifier": "t_bytes32",
-                                  "typeString": "bytes32"
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 41,
-                              "type": "function (bytes32,bytes32)",
-                              "value": "addSearchwordAndMessage"
+                              "referencedDeclaration": 40,
+                              "type": "function (string memory)",
+                              "value": "addSearchTerm"
                             },
-                            "id": 11,
+                            "id": 9,
                             "name": "Identifier",
-                            "src": "177:23:0"
+                            "src": "159:13:0"
                           },
                           {
                             "attributes": {
@@ -300,56 +300,42 @@
                                 null
                               ],
                               "referencedDeclaration": 6,
-                              "type": "bytes32",
+                              "type": "string memory",
                               "value": "searchword"
                             },
-                            "id": 12,
+                            "id": 10,
                             "name": "Identifier",
-                            "src": "201:10:0"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 8,
-                              "type": "bytes32",
-                              "value": "message"
-                            },
-                            "id": 13,
-                            "name": "Identifier",
-                            "src": "213:7:0"
+                            "src": "173:10:0"
                           }
                         ],
-                        "id": 14,
+                        "id": 11,
                         "name": "FunctionCall",
-                        "src": "177:44:0"
+                        "src": "159:25:0"
                       }
                     ],
-                    "id": 15,
+                    "id": 12,
                     "name": "ExpressionStatement",
-                    "src": "177:44:0"
+                    "src": "159:25:0"
                   }
                 ],
-                "id": 16,
+                "id": 13,
                 "name": "Block",
-                "src": "171:55:0"
+                "src": "153:36:0"
               }
             ],
-            "id": 17,
+            "id": 14,
             "name": "FunctionDefinition",
-            "src": "100:126:0"
+            "src": "100:89:0"
           }
         ],
-        "id": 18,
+        "id": 15,
         "name": "ContractDefinition",
-        "src": "54:174:0"
+        "src": "54:137:0"
       }
     ],
-    "id": 19,
+    "id": 16,
     "name": "SourceUnit",
-    "src": "0:229:0"
+    "src": "0:192:0"
   },
   "compiler": {
     "name": "solc",
@@ -368,5 +354,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-20T05:45:40.952Z"
+  "updatedAt": "2018-02-22T06:18:36.216Z"
 }

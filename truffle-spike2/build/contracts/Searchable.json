@@ -34,6 +34,30 @@
       "inputs": [
         {
           "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "AddSearchTerm",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "RemoveSearchTerm",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "name": "previousOwner",
           "type": "address"
         },
@@ -50,33 +74,43 @@
       "constant": false,
       "inputs": [
         {
-          "name": "searchword",
-          "type": "bytes32"
-        },
-        {
-          "name": "message",
-          "type": "bytes32"
+          "name": "term",
+          "type": "string"
         }
       ],
-      "name": "addSearchwordAndMessage",
+      "name": "addSearchTerm",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "name": "removeSearchTerm",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "bytecode": "0x6060604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061036b806100536000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461005c578063d91d8bab146100b1578063f2fde38b146100e5575b600080fd5b341561006757600080fd5b61006f61011e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100bc57600080fd5b6100e360048080356000191690602001909190803560001916906020019091905050610143565b005b34156100f057600080fd5b61011c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ea565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561019e57600080fd5b81600019167f6d65737361676500000000000000000000000000000000000000000000000000600019168260405180826000191660001916815260200191505060405180910390a25050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561024557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561028157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820b96d5b95ff53f9c774cd14cb5fcc7d5afcc6fb8853768eb14150f8d36ea9ccf70029",
-  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b1461005c578063d91d8bab146100b1578063f2fde38b146100e5575b600080fd5b341561006757600080fd5b61006f61011e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34156100bc57600080fd5b6100e360048080356000191690602001909190803560001916906020019091905050610143565b005b34156100f057600080fd5b61011c600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101ea565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561019e57600080fd5b81600019167f6d65737361676500000000000000000000000000000000000000000000000000600019168260405180826000191660001916815260200191505060405180910390a25050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561024557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561028157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820b96d5b95ff53f9c774cd14cb5fcc7d5afcc6fb8853768eb14150f8d36ea9ccf70029",
-  "sourceMap": "242:548:1:-;;;509:10:2;501:5;;:18;;;;;;;;;;;;;;;;;;242:548:1;;;;;;",
-  "deployedSourceMap": "242:548:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;627:161:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20;;;;;;;;;;;;;:::o;627:161:1:-;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;772:10:1;738:45;;;752:18;738:45;;;743:7;738:45;;;;;;;;;;;;;;;;;;;;;;;;627:161;;:::o;832:169:2:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
-  "source": "pragma solidity ^0.4.18;\n\n/* import \"./Ownable.sol\"; */\nimport \"zeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\n/**\n * @title Searchable\n * @dev Allows the owner to associate searchwords and\n *         messages with their contract.\n */\ncontract Searchable is Ownable {\n\n  /**\n    * @dev Allows the owner to associate a searchword and\n    *         message with their contract.\n    * @param searchword A word which can be searched for.\n    *         Will be associated with this contract and message.\n    * @param message A message or description to be associated\n    *         with this contract and searchword.\n    */\n  function addSearchwordAndMessage(\n    bytes32 searchword,\n    bytes32 message\n  )\n    onlyOwner public\n  {\n    log2(message, bytes32(\"message\"), searchword);\n  }\n}\n",
+  "bytecode": "0x6060604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061052f806100536000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058201b5c02e516d5335852e6908e0f25c6918dfbaf406c1ea62ac6a23d44a2a439230029",
+  "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630693b4f8146100675780638da5cb5b146100c4578063b1e69bd414610119578063f2fde38b14610176575b600080fd5b341561007257600080fd5b6100c2600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506101af565b005b34156100cf57600080fd5b6100d761029c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012457600080fd5b610174600480803590602001908201803590602001908080601f016020809104026020016040519081016040528093929190818152602001838380828437820191505050505050919050506102c1565b005b341561018157600080fd5b6101ad600480803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506103ae565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561020a57600080fd5b806040518082805190602001908083835b602083101515610240578051825260208201915060208101905060208303925061021b565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fed904944514c6933ff206bad3c78e76bc1b739686bd146f73ea7da556e3eaf1f60405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561031c57600080fd5b806040518082805190602001908083835b602083101515610352578051825260208201915060208101905060208303925061032d565b6001836020036101000a03801982511681845116808217855250505050505090500191505060405180910390207fb130466b16614e831782d5708cf5dd2f98201c1a2729b1eb3a1176de511a297760405160405180910390a250565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561040957600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561044557600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058201b5c02e516d5335852e6908e0f25c6918dfbaf406c1ea62ac6a23d44a2a439230029",
+  "sourceMap": "197:537:1:-;;;509:10:2;501:5;;:18;;;;;;;;;;;;;;;;;;197:537:1;;;;;;",
+  "deployedSourceMap": "197:537:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;437:84:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90:1;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;722:4:1;705:22;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;642:90:1;:::o;238:20:2:-;;;;;;;;;;;;;:::o;437:84:1:-;653:5:2;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;511:4:1;497:19;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;437:84:1;:::o;832:169:2:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o",
+  "source": "pragma solidity ^0.4.18;\n\n\nimport \"zeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\n/**\n * @title Searchable\n * @dev Allows a contract owner to associate search terms with their contract.\n */\ncontract Searchable is Ownable {\n\n  event AddSearchTerm(string indexed term);\n  event RemoveSearchTerm(string indexed term);\n\n  /**\n   * @dev Allows contract owner to add a search term.\n   * @param term The search term to be added.\n   */\n  function addSearchTerm (string term) public onlyOwner {\n    AddSearchTerm(term);\n  }\n\n  /**\n   * @dev Allows contract owner to remove a search term.\n   * @param term The search term to be removed.\n   */\n  function removeSearchTerm (string term) public onlyOwner {\n    RemoveSearchTerm(term);\n  }\n}\n",
   "sourcePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/Searchable.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/jasonemberley/eth-denver/search/truffle-spike2/contracts/Searchable.sol",
       "exportedSymbols": {
         "Searchable": [
-          42
+          53
         ]
       }
     },
@@ -90,39 +124,39 @@
             ".18"
           ]
         },
-        "id": 20,
+        "id": 17,
         "name": "PragmaDirective",
         "src": "0:24:1"
       },
       {
         "attributes": {
-          "SourceUnit": 99,
+          "SourceUnit": 110,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-          "scope": 43,
+          "scope": 54,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 21,
+        "id": 18,
         "name": "ImportDirective",
-        "src": "56:59:1"
+        "src": "27:59:1"
       },
       {
         "attributes": {
           "contractDependencies": [
-            98
+            109
           ],
           "contractKind": "contract",
-          "documentation": "@title Searchable\n@dev Allows the owner to associate searchwords and\n        messages with their contract.",
+          "documentation": "@title Searchable\n@dev Allows a contract owner to associate search terms with their contract.",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            42,
-            98
+            53,
+            109
           ],
           "name": "Searchable",
-          "scope": 43
+          "scope": 54
         },
         "children": [
           {
@@ -136,26 +170,116 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 98,
+                  "referencedDeclaration": 109,
                   "type": "contract Ownable"
                 },
-                "id": 22,
+                "id": 19,
                 "name": "UserDefinedTypeName",
-                "src": "265:7:1"
+                "src": "220:7:1"
               }
             ],
-            "id": 23,
+            "id": 20,
             "name": "InheritanceSpecifier",
-            "src": "265:7:1"
+            "src": "220:7:1"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "AddSearchTerm"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "term",
+                      "scope": 24,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 21,
+                        "name": "ElementaryTypeName",
+                        "src": "253:6:1"
+                      }
+                    ],
+                    "id": 22,
+                    "name": "VariableDeclaration",
+                    "src": "253:19:1"
+                  }
+                ],
+                "id": 23,
+                "name": "ParameterList",
+                "src": "252:21:1"
+              }
+            ],
+            "id": 24,
+            "name": "EventDefinition",
+            "src": "233:41:1"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "RemoveSearchTerm"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "term",
+                      "scope": 28,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 25,
+                        "name": "ElementaryTypeName",
+                        "src": "300:6:1"
+                      }
+                    ],
+                    "id": 26,
+                    "name": "VariableDeclaration",
+                    "src": "300:19:1"
+                  }
+                ],
+                "id": 27,
+                "name": "ParameterList",
+                "src": "299:21:1"
+              }
+            ],
+            "id": 28,
+            "name": "EventDefinition",
+            "src": "277:44:1"
           },
           {
             "attributes": {
               "constant": false,
               "implemented": true,
               "isConstructor": false,
-              "name": "addSearchwordAndMessage",
+              "name": "addSearchTerm",
               "payable": false,
-              "scope": 42,
+              "scope": 53,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -166,59 +290,33 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "searchword",
-                      "scope": 41,
+                      "name": "term",
+                      "scope": 40,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "bytes32",
+                      "type": "string memory",
                       "value": null,
                       "visibility": "internal"
                     },
                     "children": [
                       {
                         "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
+                          "name": "string",
+                          "type": "string storage pointer"
                         },
-                        "id": 24,
+                        "id": 29,
                         "name": "ElementaryTypeName",
-                        "src": "665:7:1"
+                        "src": "461:6:1"
                       }
                     ],
-                    "id": 25,
+                    "id": 30,
                     "name": "VariableDeclaration",
-                    "src": "665:18:1"
-                  },
-                  {
-                    "attributes": {
-                      "constant": false,
-                      "name": "message",
-                      "scope": 41,
-                      "stateVariable": false,
-                      "storageLocation": "default",
-                      "type": "bytes32",
-                      "value": null,
-                      "visibility": "internal"
-                    },
-                    "children": [
-                      {
-                        "attributes": {
-                          "name": "bytes32",
-                          "type": "bytes32"
-                        },
-                        "id": 26,
-                        "name": "ElementaryTypeName",
-                        "src": "689:7:1"
-                      }
-                    ],
-                    "id": 27,
-                    "name": "VariableDeclaration",
-                    "src": "689:15:1"
+                    "src": "461:11:1"
                   }
                 ],
-                "id": 28,
+                "id": 31,
                 "name": "ParameterList",
-                "src": "659:49:1"
+                "src": "460:13:1"
               },
               {
                 "attributes": {
@@ -227,9 +325,9 @@
                   ]
                 },
                 "children": [],
-                "id": 31,
+                "id": 34,
                 "name": "ParameterList",
-                "src": "732:0:1"
+                "src": "491:0:1"
               },
               {
                 "attributes": {
@@ -244,18 +342,18 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 72,
+                      "referencedDeclaration": 83,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 29,
+                    "id": 32,
                     "name": "Identifier",
-                    "src": "713:9:1"
+                    "src": "481:9:1"
                   }
                 ],
-                "id": 30,
+                "id": 33,
                 "name": "ModifierInvocation",
-                "src": "713:9:1"
+                "src": "481:9:1"
               },
               {
                 "children": [
@@ -280,28 +378,20 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_bytes32",
-                                  "typeString": "bytes32"
-                                },
-                                {
-                                  "typeIdentifier": "t_bytes32",
-                                  "typeString": "bytes32"
-                                },
-                                {
-                                  "typeIdentifier": "t_bytes32",
-                                  "typeString": "bytes32"
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 107,
-                              "type": "function (bytes32,bytes32,bytes32)",
-                              "value": "log2"
+                              "referencedDeclaration": 24,
+                              "type": "function (string memory)",
+                              "value": "AddSearchTerm"
                             },
-                            "id": 32,
+                            "id": 35,
                             "name": "Identifier",
-                            "src": "738:4:1"
+                            "src": "497:13:1"
                           },
                           {
                             "attributes": {
@@ -309,113 +399,198 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 27,
-                              "type": "bytes32",
-                              "value": "message"
+                              "referencedDeclaration": 30,
+                              "type": "string memory",
+                              "value": "term"
                             },
-                            "id": 33,
-                            "name": "Identifier",
-                            "src": "743:7:1"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": true,
-                              "isStructConstructorCall": false,
-                              "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
-                              "type": "bytes32",
-                              "type_conversion": true
-                            },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": [
-                                    {
-                                      "typeIdentifier": "t_stringliteral_c2baf6c66618acd49fb133cebc22f55bd907fe9f0d69a726d45b7539ba6bbe08",
-                                      "typeString": "literal_string \"message\""
-                                    }
-                                  ],
-                                  "isConstant": false,
-                                  "isLValue": false,
-                                  "isPure": true,
-                                  "lValueRequested": false,
-                                  "type": "type(bytes32)",
-                                  "value": "bytes32"
-                                },
-                                "id": 34,
-                                "name": "ElementaryTypeNameExpression",
-                                "src": "752:7:1"
-                              },
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "hexvalue": "6d657373616765",
-                                  "isConstant": false,
-                                  "isLValue": false,
-                                  "isPure": true,
-                                  "lValueRequested": false,
-                                  "subdenomination": null,
-                                  "token": "string",
-                                  "type": "literal_string \"message\"",
-                                  "value": "message"
-                                },
-                                "id": 35,
-                                "name": "Literal",
-                                "src": "760:9:1"
-                              }
-                            ],
                             "id": 36,
-                            "name": "FunctionCall",
-                            "src": "752:18:1"
-                          },
-                          {
-                            "attributes": {
-                              "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
-                              "referencedDeclaration": 25,
-                              "type": "bytes32",
-                              "value": "searchword"
-                            },
-                            "id": 37,
                             "name": "Identifier",
-                            "src": "772:10:1"
+                            "src": "511:4:1"
                           }
                         ],
-                        "id": 38,
+                        "id": 37,
                         "name": "FunctionCall",
-                        "src": "738:45:1"
+                        "src": "497:19:1"
                       }
                     ],
-                    "id": 39,
+                    "id": 38,
                     "name": "ExpressionStatement",
-                    "src": "738:45:1"
+                    "src": "497:19:1"
                   }
                 ],
-                "id": 40,
+                "id": 39,
                 "name": "Block",
-                "src": "732:56:1"
+                "src": "491:30:1"
               }
             ],
-            "id": 41,
+            "id": 40,
             "name": "FunctionDefinition",
-            "src": "627:161:1"
+            "src": "437:84:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "removeSearchTerm",
+              "payable": false,
+              "scope": 53,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "term",
+                      "scope": 52,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 41,
+                        "name": "ElementaryTypeName",
+                        "src": "669:6:1"
+                      }
+                    ],
+                    "id": 42,
+                    "name": "VariableDeclaration",
+                    "src": "669:11:1"
+                  }
+                ],
+                "id": 43,
+                "name": "ParameterList",
+                "src": "668:13:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 46,
+                "name": "ParameterList",
+                "src": "699:0:1"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 83,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 44,
+                    "name": "Identifier",
+                    "src": "689:9:1"
+                  }
+                ],
+                "id": 45,
+                "name": "ModifierInvocation",
+                "src": "689:9:1"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 28,
+                              "type": "function (string memory)",
+                              "value": "RemoveSearchTerm"
+                            },
+                            "id": 47,
+                            "name": "Identifier",
+                            "src": "705:16:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 42,
+                              "type": "string memory",
+                              "value": "term"
+                            },
+                            "id": 48,
+                            "name": "Identifier",
+                            "src": "722:4:1"
+                          }
+                        ],
+                        "id": 49,
+                        "name": "FunctionCall",
+                        "src": "705:22:1"
+                      }
+                    ],
+                    "id": 50,
+                    "name": "ExpressionStatement",
+                    "src": "705:22:1"
+                  }
+                ],
+                "id": 51,
+                "name": "Block",
+                "src": "699:33:1"
+              }
+            ],
+            "id": 52,
+            "name": "FunctionDefinition",
+            "src": "642:90:1"
           }
         ],
-        "id": 42,
+        "id": 53,
         "name": "ContractDefinition",
-        "src": "242:548:1"
+        "src": "197:537:1"
       }
     ],
-    "id": 43,
+    "id": 54,
     "name": "SourceUnit",
-    "src": "0:791:1"
+    "src": "0:735:1"
   },
   "compiler": {
     "name": "solc",
@@ -423,5 +598,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-20T05:45:40.951Z"
+  "updatedAt": "2018-02-22T06:18:36.215Z"
 }

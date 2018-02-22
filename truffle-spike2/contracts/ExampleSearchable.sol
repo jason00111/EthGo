@@ -4,7 +4,7 @@ import "./Searchable.sol";
 
 contract ExampleSearchable is Searchable {
 
-  function ExampleSearchable(bytes32 searchword, bytes32 message) public {
-    addSearchwordAndMessage(searchword, message);
+  function ExampleSearchable(string searchword) public {
+    addSearchTerm(searchword);
   }
 }

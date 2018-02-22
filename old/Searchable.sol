@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./ownership/Ownable.sol";
 
 
 /**
@@ -10,15 +10,15 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
  */
 contract Searchable is Ownable {
 
-  event AddSearchTerm(string indexed term);
+  event AddSearchTerm(string indexed term, string message);
   event RemoveSearchTerm(string indexed term);
 
   /**
    * @dev Allows contract owner to add a search term.
    * @param term The search term to be added.
    */
-  function addSearchTerm (string term) public onlyOwner {
-    AddSearchTerm(term);
+  function addSearchTerm (string term, string message) public onlyOwner {
+    AddSearchTerm(term, message);
   }
 
   /**
